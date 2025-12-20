@@ -1,0 +1,14 @@
+.categoryPanel button{text-transform: capitalize !important ;}
+
+.nav li .submenu {visibility: hidden;}
+
+/*-- Submenu Syles --*/
+.nav li .submenu button{font-weight: 550 !important;}
+.nav li:hover .submenu {opacity: 1 !important; visibility: inherit; top:100%}
+.nav li .submenu li:hover button{color: #d84315 !important;}
+
+.nav li .submenu li .submenu {top:0% !important; left: 120px !important; opacity: 0 !important;}
+.nav li .submenu li:hover .submenu {left: 100% !important; opacity: 1 !important;}
+
+.nav li .submenu li .submenu button{color: #0f0f0f !important;}
+.nav li .submenu li .submenu button:hover{color: #d84315 !important;}
