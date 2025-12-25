@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Search from "../Search";
 import Badge from "@mui/material/Badge";
@@ -9,6 +9,7 @@ import { LuGitCompareArrows } from "react-icons/lu";
 import { FaRegHeart } from "react-icons/fa";
 import Tooltip from "@mui/material/Tooltip";
 import Navigation from "./Navigation";
+import { MyContext } from "../../App";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -21,9 +22,11 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 // Header Component
 const Header = () => {
+  const context = useContext(MyContext);
+
   return (
-    <header className="bg-[#ffffff]">
-      <div className="top-strip py-2 border-t-[1px] border-[#ffccbc] border-b-[4px]">
+    <header className="bg-[#ffffff] sticky top-0 z-[100] shadow-md">
+      <div className="top-strip py-2 border-t-[1px] border-[#ffccbc] border-b-[3px]">
         <div className="container">
           <div className="flex items-center justify-between">
             <div className="col1 w-[50%]">
@@ -58,8 +61,8 @@ const Header = () => {
         </div>
       </div>
 
-        {/*-- Logo Function --*/}
-      <div className="header py-4 border-b-[4px] border-[#ffccbc]">
+      {/*-- Logo Function --*/}
+      <div className="header py-4 border-b-[3px] border-[#ffccbc]">
         <div className="container flex items-center justify-around">
           <div className="col1 w-[16%]">
             <Link to={"/"}>
@@ -71,7 +74,7 @@ const Header = () => {
             <Search />
           </div>
 
-            {/*-- Login / Register Function --*/}
+          {/*-- Login / Register Function --*/}
           <div className="col3 w-[30%] flex items-center pl-7">
             <ul className="flex items-center justify-end gap-5 w-full">
               <li className="list-none">
@@ -90,7 +93,7 @@ const Header = () => {
                 </Link>
               </li>
 
-                {/*-- Header Icons Function --*/}
+              {/*-- Header Icons Function --*/}
               <li>
                 <Tooltip title="Compare">
                   <IconButton aria-label="compare">
@@ -113,7 +116,10 @@ const Header = () => {
 
               <li>
                 <Tooltip title="Cart">
-                  <IconButton aria-label="cart">
+                  <IconButton
+                    aria-label="cart"
+                    onClick={() => context.setOpenCartPanel(true)}
+                  >
                     <StyledBadge badgeContent={0} color="secondary">
                       <MdOutlineShoppingCartCheckout className="text-[#1a1a1a] text-[25px]" />
                     </StyledBadge>

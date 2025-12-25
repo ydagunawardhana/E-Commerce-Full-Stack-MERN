@@ -20,8 +20,8 @@ const Navigation = () => {
     <>
       {" "}
       {/*-- Shop by Categories Button --*/}
-      <nav className="py-2">
-        <div className="container flex items-center justify-end gap-10 ">
+      <nav>
+        <div className="container flex items-center justify-end gap-10 py-2">
           <div className="col_1 w-[23%]">
             <Button
               className="!text-[#0f0f0f] !font-[700] hover:!text-[#d84315] !rounded-full gap-2 w-full"
@@ -35,26 +35,29 @@ const Navigation = () => {
 
           {/*-- Home Button Function --*/}
           <div className="col_2 w-[85%]">
-            <ul className="flex items-center gap-6 nav">
+            <ul className="flex items-center gap-5 nav">
               <li className="list-none">
                 <Link to="/" className="link transition link font-[600]">
                   <Button
                     className="link transition !font-[700] text-[#0f0f0f] 
-                        hover:!text-[#d84315] !text-[15px] !rounded-full"
+                        hover:!text-[#d84315] !text-[14px] !rounded-full !py-2"
                   >
-                    Home
+                    HOME
                   </Button>
                 </Link>
               </li>
 
               {/*-- Fashion Button Function --*/}
               <li className="list-none relative">
-                <Link to="/" className="link transition link font-[600]">
+                <Link
+                  to="/productListing"
+                  className="link transition link font-[600]"
+                >
                   <Button
                     className="link transition !font-[700] text-[#0f0f0f] 
-                        hover:!text-[#d84315] !text-[15px] !rounded-full"
+                        hover:!text-[#d84315] !text-[14px] !rounded-full !py-2"
                   >
-                    Fashion
+                    FASHION
                   </Button>
                 </Link>
 
@@ -64,7 +67,7 @@ const Navigation = () => {
                 >
                   <ul>
                     <li className="list-none w-full relative">
-                      <Link to="/" className="w-full">
+                      <Link to="/productListing" className="w-full">
                         <Button
                           className=" text-[#0f0f0f] w-full !text-left
                                         !justify-start !rounded-none "
@@ -78,7 +81,7 @@ const Navigation = () => {
                         >
                           <ul>
                             <li className="list-none w-full">
-                              <Link to="/" className="w-full">
+                              <Link to="/productListing" className="w-full">
                                 <Button
                                   className=" text-[#0f0f0f] w-full !text-left
                                         !justify-start !rounded-none"
@@ -98,7 +101,7 @@ const Navigation = () => {
                               </Link>
                             </li>
                             <li className="list-none w-full">
-                              <Link to="/" className="w-full">
+                              <Link to="/productListing" className="w-full">
                                 <Button
                                   className=" text-[#0f0f0f] w-full !text-left
                                         !justify-start !rounded-none"
@@ -170,9 +173,9 @@ const Navigation = () => {
                 <Link to="/" className="link transition link font-[600]">
                   <Button
                     className="link transition !font-[700]  text-[#0f0f0f] 
-                        hover:!text-[#d84315] !text-[15px] !rounded-full"
+                        hover:!text-[#d84315] !text-[14px] !rounded-full !py-2"
                   >
-                    Electronics
+                    ELECTRONICS
                   </Button>
                 </Link>
 
@@ -222,9 +225,9 @@ const Navigation = () => {
                 <Link to="/" className="link transition link font-[600]">
                   <Button
                     className="link transition !font-[700]  text-[#0f0f0f] 
-                        hover:!text-[#d84315] !text-[15px] !rounded-full"
+                        hover:!text-[#d84315] !text-[14px] !rounded-full !py-2"
                   >
-                    Bags
+                    BAGS
                   </Button>
                 </Link>
 
@@ -263,9 +266,9 @@ const Navigation = () => {
                 <Link to="/" className="link transition link font-[600]">
                   <Button
                     className="link transition !font-[700]  text-[#0f0f0f] 
-                        hover:!text-[#d84315] !text-[15px] !rounded-full"
+                        hover:!text-[#d84315] !text-[14px] !rounded-full !py-2"
                   >
-                    Footwear
+                    FOOTWEAR
                   </Button>
                 </Link>
 
@@ -304,9 +307,9 @@ const Navigation = () => {
                 <Link to="/" className="link transition link font-[600]">
                   <Button
                     className="link transition !font-[700]  text-[#0f0f0f] 
-                        hover:!text-[#d84315] !text-[15px] !rounded-full"
+                        hover:!text-[#d84315] !text-[14px] !rounded-full !py-2"
                   >
-                    Groceries
+                    GROCERIES
                   </Button>
                 </Link>
               </li>
@@ -316,9 +319,9 @@ const Navigation = () => {
                 <Link to="/" className="link transition link font-[600]">
                   <Button
                     className="link transition !font-[700]  text-[#0f0f0f] 
-                        hover:!text-[#d84315] !text-[15px] !rounded-full"
+                        hover:!text-[#d84315] !text-[14px] !rounded-full !py-1"
                   >
-                    Beauty
+                    BEAUTY
                   </Button>
                 </Link>
               </li>
@@ -328,9 +331,9 @@ const Navigation = () => {
                 <Link to="/" className="link transition link font-[600]">
                   <Button
                     className="link transition !font-[700]  text-[#0f0f0f] 
-                        hover:!text-[#d84315] !text-[15px] !rounded-full"
+                        hover:!text-[#d84315] !text-[14px] !rounded-full !py-2"
                   >
-                    Wellness
+                    WELLNESS
                   </Button>
                 </Link>
               </li>
@@ -340,9 +343,9 @@ const Navigation = () => {
                 <Link to="/" className="link transition  link font-[600]">
                   <Button
                     className="link transition !font-[700]  text-[#0f0f0f] 
-                        hover:!text-[#d84315] !text-[15px] !rounded-full"
+                        hover:!text-[#d84315] !text-[14px] !rounded-full !py-2"
                   >
-                    Jewellery
+                    JEWELLERY
                   </Button>
                 </Link>
               </li>
