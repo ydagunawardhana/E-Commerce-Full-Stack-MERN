@@ -1,0 +1,424 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  background-color: #dddddd;
+  color: rgba(0, 0, 0, 0, 9);
+  overflow-x: hidden;
+}
+
+/* Paragrph Functions */
+p {
+  font-size: 14px;
+  line-height: 25px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+/* Font Functions */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+}
+
+/* Home Page Scroll Bar Functions */
+::-webkit-scrollbar {
+  width: 10px !important;
+  height: 10px !important;
+}
+::-webkit-scrollbar-thumb {
+  background: #ffab91;
+}
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+/* My Orders Page Scroll Functions */
+.overflow-x-auto::-webkit-scrollbar-thumb {
+  background: #ccc;
+}
+
+.container {
+  width: 95%;
+  margin: auto;
+}
+
+/*-- Header Styles --*/
+.link:hover {
+  color: #ff5252;
+}
+
+.MuiBadge-badge {
+  background-color: #ff5252 !important;
+}
+
+/*-- Home SliderV2 Styles --*/
+.swiper-pagination-bullet-active {
+  background: #ff5252 !important;
+}
+
+.homeSliderV2 .swiper-slide-active .info {
+  right: 0px !important;
+  opacity: 1;
+}
+
+.homeSliderV2 .swiper-slide-active .info {
+  right: 0px !important;
+  opacity: 1;
+}
+.homeSliderV2 .swiper-slide-active .info h4 {
+  right: 0px !important;
+  opacity: 1;
+}
+.homeSliderV2 .swiper-slide-active .info h2 {
+  right: 0px !important;
+  opacity: 1;
+}
+.homeSliderV2 .swiper-slide-active .info h3 {
+  right: 0px !important;
+  opacity: 1;
+}
+.homeSliderV2 .swiper-slide-active .info .btn_ {
+  right: 0px !important;
+  opacity: 1;
+}
+
+.homeSliderV2 .info h4 {
+  transition-duration: 1s;
+}
+.homeSliderV2 .info h2 {
+  transition-duration: 1.3s;
+}
+.homeSliderV2 .info h3 {
+  transition-duration: 2s;
+}
+.homeSliderV2 .info .btn_ {
+  transition-duration: 2.3s;
+}
+
+/*-- Category Panel Styles --*/
+nav ul button {
+  text-transform: capitalize !important;
+  color: #0f0f0f !important;
+}
+
+.sliderHome {
+  overflow: inherit !important;
+}
+
+/*-- Home Swiper Button --*/
+.swiper-button-prev svg,
+.swiper-button-next svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffffbd;
+  border-radius: 100%;
+  width: 35px !important;
+  height: 35px !important;
+  color: #ff5252;
+  box-shadow: 0 1px 3px #0000005b, 0 1px 2px #0000005b !important;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 22px !important;
+  color: #000 !important;
+}
+
+/* AdsBanner Slider Button */
+.smlBtn .swiper-button-prev svg,
+.smlBtn .swiper-button-next svg {
+  width: 25px !important;
+  height: 25px !important;
+  min-width: 25px !important;
+  top: 55% !important;
+}
+
+/*-- Category Swiper Button --*/
+.homecategoryslider {
+  overflow: inherit !important;
+}
+.homecategoryslider .swiper-button-prev svg,
+.homecategoryslider .swiper-button-next svg {
+  width: 25px !important;
+  height: 25px !important;
+  min-width: 25px !important;
+}
+.homecategoryslider .swiper-button-prev:after,
+.homecategoryslider .swiper-button-next:after {
+  font-size: 16px !important;
+}
+
+.homecategoryslider .swiper-button-prev svg {
+  left: -10px !important;
+}
+.homecategoryslider .swiper-button-next svg {
+  right: -10px !important;
+}
+
+.homecategoryslider .item {
+  border: 1px solid rgba(0, 0, 0, 0, 0.1);
+}
+
+/*.homecategoryslider .swiper-button-prev:hover{background: #d84315 !important;}
+.homecategoryslider .swiper-button-prev:hover::after{color: #fff !important;}*/
+
+.homecategoryslider .item:hover img {
+  transform: scale(1.1);
+}
+
+/* Home Multitab ProductsSlider */
+.MuiTabs-indicator {
+  background-color: #ff8a65 !important;
+}
+.MuiTab-textColorPrimary.Mui-selected {
+  color: #ff8a65 !important;
+  font-weight: 600 !important;
+}
+
+/* productSlider Function*/
+.productSlider .swiper-wrapper {
+  padding: 15px;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.productSlider .swiper-button-prev svg,
+.productSlider .swiper-button-next svg {
+  width: 30px !important;
+  height: 30px !important;
+  min-width: 30px !important;
+}
+
+/* Blog Item slider Function */
+.blogSection .swiper-button-prev svg,
+.blogSection .swiper-button-next svg {
+  width: 30px !important;
+  height: 30px !important;
+  min-width: 30px !important;
+}
+
+/*-- Footer Subscribe Button --*/
+.btn-org {
+  background: #ff5252 !important;
+  color: #fff !important;
+  font-weight: 550 !important;
+  font-size: 13px !important;
+  padding: 8px 15px !important;
+}
+
+.btn-lg {
+  font-size: 14px !important;
+  padding: 7px 12px !important;
+}
+
+.btn-org:hover {
+  background: #171717 !important;
+  color: #fff !important;
+}
+
+/*-- My Profile Cancle Button --*/
+.btn-org.btn-border {
+  background: none !important;
+  color: #ff5252 !important;
+  border: 2px solid #ff5252 !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  padding: 7px 20px !important;
+}
+
+.btn-org.btn-border:hover {
+  background: #171717 !important;
+  color: #fff !important;
+  border: 2px solid #171717 !important;
+}
+
+.btn-sm {
+  font-size: 12px !important;
+  padding: 5px 12px !important;
+}
+
+footer form input::placeholder {
+  font-size: 14px;
+}
+
+/*-- Footer Check Button --*/
+.css-vuhw6e-MuiButtonBase-root-MuiSwitchBase-root-MuiCheckbox-root.Mui-checked,
+.css-vuhw6e-MuiButtonBase-root-MuiSwitchBase-root-MuiCheckbox-root
+  .MuiCheckbox-indeterminate {
+  color: #ff5252 !important;
+}
+
+/*-- Product Check Button --*/
+.MuiCheckbox-root {
+  padding: 8px !important;
+}
+
+/*-- Filter Collapse Smooth --*/
+.ReactCollapse--collapse {
+  transition: height 500ms;
+}
+
+/*-- Grid & List Buttons Active --*/
+.itemViewActions button.active svg {
+  color: #ff5252 !important;
+  opacity: 1;
+}
+
+/*-- Paginations Buttons Active --*/
+.Mui-selected.MuiPaginationItem-page {
+  background: #ff5252 !important;
+  color: #fff !important;
+}
+
+/*-- Product Zoom Slider --*/
+.zoomProductSliderThumbs .swiper-wrapper {
+  padding-bottom: 50px !important;
+}
+
+.zoomProductSliderThumbs .swiper-button-next svg {
+  width: 25px !important;
+  height: 25px !important;
+  min-width: 25px !important;
+  margin-bottom: -18px;
+}
+
+.zoomProductSliderThumbs .swiper-button-prev svg {
+  width: 25px !important;
+  height: 25px !important;
+  min-width: 25px !important;
+  margin-top: -18px;
+}
+
+/*-- Product Details (Size Button) --*/
+.product-size-btn {
+  min-width: 40px !important;
+  height: 30px !important;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+/*-- Product Quantity Box --*/
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/*-- Review Scroal Bar --*/
+.reviewScroll::-webkit-scrollbar {
+  width: 5px !important;
+}
+
+.reviewScroll::-webkit-scrollbar-thumb {
+  background: #ccc !important;
+}
+
+/*-- Product Dialog Bar --*/
+.productDetailsModel .MuiDialogContent-root {
+  padding-top: 30px !important;
+  padding-bottom: 30px !important;
+}
+
+/*-- Remove Password Icon In Default Browser --*/
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
+
+/*-- Cart Panel Drawer --*/
+.cartPanel .MuiPaper-root {
+  width: 400px !important;
+  overflow: hidden !important;
+}
+
+/*-- Cart Page Size & Quantity Menu Scroll --*/
+#size-menu .MuiButtonBase-root {
+  font-size: 12px !important;
+}
+
+/*-- Verify Page Styies --*/
+.otpBox input {
+  border: 1px solid rgba(0, 0, 0, 0.3) !important;
+  outline: none !important;
+  border-radius: 4px;
+}
+
+.otpBox input:focus {
+  border: 1px solid rgba(0, 0, 0, 0, 7) !important;
+}
+
+.otpPage .container {
+  height: 90vh;
+  display: flex;
+}
+
+/*-- Account Menu --*/
+#account-menu .MuiPaper-root {
+  width: 200px !important;
+}
+
+/*-- My-Account Menu Button Styles --*/
+.myAccountTabs li a {
+  position: relative;
+  display: block;
+}
+
+.myAccountTabs li a:before {
+  content: "";
+  width: 5px;
+  height: 50%;
+  position: absolute;
+  top: 50px;
+  left: 0px;
+  background: #ff5252;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+}
+
+.myAccountTabs li a.active::before {
+  height: 100%;
+  opacity: 1;
+  top: 0px;
+}
+
+.myAccountTabs li a.active button svg {
+  color: #ff5252 !important;
+  opacity: 1 !important;
+}
+
+/*-- Register button Loading progress --*/
+button .MuiCircularProgress-root {
+  width: 23px !important;
+  height: 23px !important;
+}
+
+/*-- Phone Number Country Field --*/
+.react-international-phone-input {
+  width: 100% !important;
+}
+.react-international-phone-country-selector-button {
+  width: 60px !important;
+}
+.react-international-phone-input-container {
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+/*-- Add Adress Dialog Box --*/
+.css-10d30g3-MuiPaper-root-MuiDialog-paper {
+  width: 700px !important;
+  max-width: 700px !important;
+}

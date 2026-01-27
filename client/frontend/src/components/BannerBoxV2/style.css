@@ -1,0 +1,7 @@
+/* Banner Box V2 Functions */
+.bannerBoxV2 {
+  height: 200px;
+}
+.bannerBoxV2 a {
+  text-decoration: underline !important;
+}
