@@ -34,20 +34,23 @@ const Home = () => {
   const [categoryList, setCategoryList] = useState([]);
   const [banners, setBanners] = useState([]);
 
-  useEffect(() => {
-    axios.get("http://localhost:5000/api/products").then((res) => {
-      setProducts(res.data);
-    });
+ useEffect(() => {
+  const API_URL = import.meta.env.VITE_API_URL; 
 
-    axios.get("http://localhost:5000/api/categories").then((res) => {
-      if (res.data && Array.isArray(res.data)) {
-        setCategoryList(res.data);
-      }
-    });
+  axios.get(`${API_URL}/api/products`).then((res) => {
+    setProducts(res.data);
+  });
 
-    axios.get("http://localhost:5000/api/banners").then((res) => {
-      setBanners(res.data);
-    });
+  axios.get(`${API_URL}/api/categories`).then((res) => {
+    if (res.data && Array.isArray(res.data)) {
+      setCategoryList(res.data);
+    }
+  });
+
+  axios.get(`${API_URL}/api/banners`).then((res) => {
+    setBanners(res.data);
+  });
+}, []);
 
     socket.on("productAdded", (newProduct) => {
       setProducts((prevProducts) => {
