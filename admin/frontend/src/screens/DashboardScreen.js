@@ -24,6 +24,7 @@ const DashboardScreen = () => {
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
   const [filterType, setFilterType] = useState("monthly");
+  const API_URL = import.meta.env.VITE_API_URL;
 
   // Stats State
   const [stats, setStats] = useState({
