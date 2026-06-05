@@ -34,34 +34,29 @@ const Home = () => {
   const [categoryList, setCategoryList] = useState([]);
   const [banners, setBanners] = useState([]);
 
- useEffect(() => {
-  const API_URL = import.meta.env.VITE_API_URL; 
+useEffect(() => {
+    const API_URL = import.meta.env.VITE_API_URL;
 
-  axios.get(`${API_URL}/api/products`).then((res) => {
-    setProducts(res.data);
-  });
+    // 1. Fetch Data
+    axios.get(`${API_URL}/api/products`).then((res) => {
+      setProducts(res.data);
+    });
 
-  axios.get(`${API_URL}/api/categories`).then((res) => {
-    if (res.data && Array.isArray(res.data)) {
-      setCategoryList(res.data);
-    }
-  });
+    axios.get(`${API_URL}/api/categories`).then((res) => {
+      if (res.data && Array.isArray(res.data)) {
+        setCategoryList(res.data);
+      }
+    });
 
-  axios.get(`${API_URL}/api/banners`).then((res) => {
-    setBanners(res.data);
-  });
-}, []);
+    axios.get(`${API_URL}/api/banners`).then((res) => {
+      setBanners(res.data);
+    });
 
+    // 2. Socket Listeners
     socket.on("productAdded", (newProduct) => {
       setProducts((prevProducts) => {
-        const isExist = prevProducts.find(
-          (item) => item._id === newProduct._id
-        );
-
-        if (!isExist) {
-          return [newProduct, ...prevProducts];
-        }
-        return prevProducts;
+        const isExist = prevProducts.find((item) => item._id === newProduct._id);
+        return !isExist ? [newProduct, ...prevProducts] : prevProducts;
       });
     });
 
@@ -73,11 +68,10 @@ const Home = () => {
     });
 
     socket.on("bannerAdded", (newBanner) => {
-      setBanners((prevBanners) => {
-        return [...prevBanners, newBanner];
-      });
+      setBanners((prevBanners) => [...prevBanners, newBanner]);
     });
 
+    // 3. Cleanup function
     return () => {
       socket.off("productAdded");
       socket.off("categoryAdded");
