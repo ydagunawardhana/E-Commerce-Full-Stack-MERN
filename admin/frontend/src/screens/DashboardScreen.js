@@ -61,10 +61,12 @@ const DashboardScreen = () => {
           },
         };
 
-        const { data } = await axios.get(
-          `http://localhost:5000/api/stats?type=${filterType}`,
-          config
-        );
+        const API_URL = import.meta.env.VITE_API_URL; 
+
+const { data } = await axios.get(
+  `${API_URL}/api/stats?type=${filterType}`,
+  config
+);
         setStats(data);
       } catch (error) {
         console.error("Error fetching stats:", error);
@@ -73,7 +75,6 @@ const DashboardScreen = () => {
 
     const fetchProducts = async () => {
       try {
-        const API_URL = import.meta.env.VITE_API_URL; 
 
         const { data } = await axios.get(`${API_URL}/api/products`);
 
