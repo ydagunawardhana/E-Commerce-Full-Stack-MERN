@@ -48,10 +48,12 @@ const AddProductScreen = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const API_URL = import.meta.env.VITE_API_URL; 
+
         const [catRes, subRes, thirdRes] = await Promise.all([
-          axios.get("http://localhost:5000/api/categories"),
-          axios.get("http://localhost:5000/api/subcategories"),
-          axios.get("http://localhost:5000/api/thirdlevels"),
+          axios.get(`${API_URL}/api/categories`),
+          axios.get(`${API_URL}/api/subcategories`),
+          axios.get(`${API_URL}/api/thirdlevels`),
         ]);
 
         setCategories(catRes.data);
