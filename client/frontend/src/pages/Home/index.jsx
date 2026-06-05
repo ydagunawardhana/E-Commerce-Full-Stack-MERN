@@ -83,7 +83,7 @@ const Home = () => {
       socket.off("categoryAdded");
       socket.off("bannerAdded");
     };
-  }, []);
+  }, [];
 
   const [value, setValue] = useState(0);
 
