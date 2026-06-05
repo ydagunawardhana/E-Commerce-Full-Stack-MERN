@@ -27,31 +27,35 @@ const ProductDetails = () => {
 
   const fetchProductData = async () => {
     try {
-      const res = await axios.get(`http://localhost:8000/api/products/${id}`);
-      const data = res.data;
-      // Image URL fix logic
-      if (data.images && data.images.length > 0) {
-        data.images = data.images.map((img) =>
-          img.startsWith("http") ? img : `http://localhost:8000${img}`
-        );
-      }
-      setProduct(data);
-    } catch (error) {
-      console.error("Error fetching product:", error);
+    const API_URL = import.meta.env.VITE_API_URL; 
+
+    
+    const res = await axios.get(`${API_URL}/api/products/${id}`);
+    const data = res.data;
+
+    
+    if (data.images && data.images.length > 0) {
+      data.images = data.images.map((img) =>
+        img.startsWith("http") ? img : `${API_URL}${img}`
+      );
     }
-  };
+    setProduct(data);
+  } catch (error) {
+    console.error("Error fetching product:", error);
+  }
+};
 
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    axios.get("http://localhost:8000/api/products").then((res) => {
-      const fixedProducts = res.data.map((item) => {
-        if (item.images) {
-          item.images = item.images.map((img) =>
-            img.startsWith("http") ? img : `http://localhost:8000${img}`
-          );
-        }
-        return item;
+    axios.get(`${API_URL}/api/products`).then((res) => {
+  const fixedProducts = res.data.map((item) => {
+    if (item.images) {
+      item.images = item.images.map((img) =>
+        img.startsWith("http") ? img : `${API_URL}${img}`
+      );
+    }
+    return item;
       });
       setProducts(fixedProducts);
     });
