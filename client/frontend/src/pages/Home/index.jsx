@@ -21,6 +21,7 @@ import axios from "axios";
 import { io } from "socket.io-client";
 
 const API_URL = import.meta.env.VITE_API_URL;
+const IMAGE_URL = import.meta.env.VITE_IMAGE_URL;
 const socket = io(API_URL);
 
 // Home Page Function (All-Merge)
@@ -37,6 +38,7 @@ const Home = () => {
 
 useEffect(() => {
     const API_URL = import.meta.env.VITE_API_URL;
+  
 
     // 1. Products 
     axios.get(`${API_URL}/api/products`).then((res) => {
@@ -51,7 +53,7 @@ useEffect(() => {
     });
 
    
-    axios.get(`${API_URL}/api/banners`).then((res) => {
+    axios.get(`${IMAGE_URL}/api/banners`).then((res) => {
       setBanners(res.data);
     });
 
