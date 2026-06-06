@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 
 // Home Category slider Functions
 const HomeCategorySlider = (props) => {
+  const API_URL = import.meta.env.VITE_API_URL;
   return (
     <div className="homecategoryslider pt-5 py-8">
       <div className="container">
@@ -24,17 +25,17 @@ const HomeCategorySlider = (props) => {
                   <SwiperSlide key={index}>
                     <Link to={`/productListing/${cat.name}`}>
                       <div className="item py-5 px-3 bg-[#ffffff] rounded-lg text-center flex items-center justify-center flex-col">
-                        <div className="w-[65px] h-[65px]    mx-auto mb-2">
-                          <img
-                            src={
-                              cat.image
-                                ? `http://localhost:5000${cat.image}`
-                                : "https://placehold.co/50x50?text=No+Img"
-                            }
-                            alt={cat.name}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
+                        <div className="w-[65px] h-[65px] mx-auto mb-2">
+  <img
+    src={
+      cat.image
+        ? `${API_URL}${cat.image}` 
+        : "https://placehold.co/50x50?text=No+Img"
+    }
+    alt={cat.name}
+    className="w-full h-full object-cover"
+  />
+</div>
                         <h3 className="text-[16px] font-[600] mt-3">
                           {cat.name}
                         </h3>
