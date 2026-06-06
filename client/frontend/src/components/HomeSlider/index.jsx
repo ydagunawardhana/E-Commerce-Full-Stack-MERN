@@ -6,6 +6,7 @@ import { Navigation, Autoplay } from "swiper/modules";
 
 //Home Sliders Functions
 const HomeSlider = (props) => {
+  const API_URL = import.meta.env.VITE_API_URL;
   return (
     <div className="homeslider py-6">
       <div className="container">
@@ -24,17 +25,17 @@ const HomeSlider = (props) => {
             props.data.map((banner, index) => {
               return (
                 <SwiperSlide key={index}>
-                  <div className="item rounded-[25px] overflow-hidden">
-                    <img
-                      src={
-                        banner.image
-                          ? `http://localhost:5000${banner.image}`
-                          : "https://via.placeholder.com/1200x400"
-                      }
-                      alt="Banner slider"
-                      className="w-full md:h-[455px] object-cover"
-                    />
-                  </div>
+                 <div className="item rounded-[25px] overflow-hidden">
+  <img
+    src={
+      banner.image
+        ? `${API_URL}${banner.image}`
+        : "https://via.placeholder.com/1200x400"
+    }
+    alt="Banner slider"
+    className="w-full md:h-[455px] object-cover"
+  />
+</div>
                 </SwiperSlide>
               );
             })
