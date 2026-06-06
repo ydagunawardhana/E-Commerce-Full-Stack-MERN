@@ -38,6 +38,7 @@ const EditProductScreen = () => {
   const [bannerFile, setBannerFile] = useState(null);
   const [bannerPreview, setBannerPreview] = useState(null);
   const [isBannerActive, setIsBannerActive] = useState(false);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   // Fetch Data
   useEffect(() => {
@@ -83,12 +84,12 @@ const EditProductScreen = () => {
         }
 
         if (data.bannerImage) {
-          setBannerPreview(
-            data.bannerImage.startsWith("/")
-              ? `http://localhost:5000${data.bannerImage}`
-              : data.bannerImage
-          );
-        }
+  setBannerPreview(
+    data.bannerImage.startsWith("/")
+      ? `${API_URL}${data.bannerImage}` 
+      : data.bannerImage
+  );
+}
       } catch (error) {
         console.error("Error fetching data", error);
       }
@@ -434,18 +435,18 @@ const EditProductScreen = () => {
               >
                 {existingImages.map((img, index) => (
                   <div key={`exist-${index}`} style={{ position: "relative" }}>
-                    <img
-                      src={
-                        img.startsWith("/")
-                          ? `http://localhost:5000${img}`
-                          : img
-                      }
-                      alt="Existing"
-                      style={previewImageStyle}
-                      onError={(e) => {
-                        e.target.src = "https://via.placeholder.com/80";
-                      }}
-                    />
+                   <img
+  src={
+    img.startsWith("/")
+      ? `${API_URL}${img}` 
+      : img
+  }
+  alt="Existing"
+  style={previewImageStyle}
+  onError={(e) => {
+    e.target.src = "https://via.placeholder.com/80";
+  }}
+/>
                     <FaTimesCircle
                       size={20}
                       color="#ef4444"
