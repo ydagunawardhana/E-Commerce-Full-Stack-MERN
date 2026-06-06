@@ -267,7 +267,7 @@ useEffect(() => {
             <p className="font-bold text-[30px]">- Only $200*</p>
           </div>
 
-          <AdsBannerSlider items={4} />
+         
         </div>
       </section>
 
@@ -297,7 +297,7 @@ useEffect(() => {
 
           <ProductsSlider items={6} products={featuredProducts} />
 
-          <AdsBannerSlider items={3} />
+          
         </div>
       </section>
 
@@ -337,7 +337,6 @@ useEffect(() => {
 
           <ProductsSlider items={6} products={groceriesProducts} />
 
-          <AdsBannerSlider items={4} />
 
           <h2 className="text-[22px] font-[600] mt-3">Beauty Products</h2>
 
