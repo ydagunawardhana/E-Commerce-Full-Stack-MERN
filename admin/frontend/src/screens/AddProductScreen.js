@@ -160,9 +160,14 @@ const AddProductScreen = () => {
           Authorization: `Bearer ${userInfo.token}`,
         },
       };
+      const API_URL = import.meta.env.VITE_API_URL;
 
       // Backend URL
-      await axios.post("http://localhost:5000/api/products", formData, config);
+      await axios.post(
+  `${API_URL}/api/products`, 
+  formData, 
+  config
+);
       alert("Product Added Successfully!");
       navigate("/products");
     } catch (error) {
