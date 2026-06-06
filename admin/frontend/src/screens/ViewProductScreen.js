@@ -9,7 +9,7 @@ const ViewProductScreen = () => {
   const [product, setProduct] = useState(null);
   const [activeImage, setActiveImage] = useState("");
   const [loadingDelete, setLoadingDelete] = useState(false);
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = process.env.REACT_APP_API_URL;
 
   // Product Data Fetching
   const fetchProduct = async () => {
@@ -42,7 +42,7 @@ const ViewProductScreen = () => {
           },
         };
 
-        const API_URL = import.meta.env.VITE_API_URL; 
+        const API_URL = process.env.REACT_APP_API_URL; 
 
         await axios.delete(
           `${API_URL}/api/products/${id}/reviews/${reviewId}`,
