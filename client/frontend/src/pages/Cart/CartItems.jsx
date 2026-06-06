@@ -13,6 +13,7 @@ import { useEffect } from "react";
 const CartItems = (props) => {
   const [sizeAnchorEl, setSizeAnchorEl] = useState(null);
   const [qtyAnchorEl, setQtyAnchorEl] = useState(null);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   // Local States
   const [selectedSize, setSelectedSize] = useState(props.item?.size);
@@ -69,16 +70,16 @@ const CartItems = (props) => {
           className="group h-[250px]"
         >
           <img
-            src={
-              props.item?.productId?.images?.[0]
-                ? props.item?.productId?.images[0].startsWith("http")
-                  ? props.item?.productId?.images[0]
-                  : `http://localhost:5000${props.item?.productId?.images[0]}`
-                : "https://placehold.co/100x100"
-            }
-            className=" object-contain group-hover:scale-105 transition-all !rounded-md"
-            alt={props.item?.productId?.name}
-          />
+  src={
+    props.item?.productId?.images?.[0]
+      ? props.item?.productId?.images[0].startsWith("http")
+        ? props.item?.productId?.images[0]
+        : `${API_URL}${props.item?.productId?.images[0]}` 
+      : "https://placehold.co/100x100"
+  }
+  className=" object-contain group-hover:scale-105 transition-all !rounded-md"
+  alt={props.item?.productId?.name}
+/>
         </Link>
       </div>
 
