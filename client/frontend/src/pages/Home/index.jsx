@@ -153,7 +153,7 @@ useEffect(() => {
     {
       id: 1,
       image:
-        "https://serviceapi.spicezgold.com/download/1760239113701_NewProject(4).jpg",
+        "https://thumbs.dreamstime.com/b/interior-design-ideas-modern-living-room-apartment-modern-apartment-living-room-cozy-open-layout-features-361407602.jpg",
       title: "Sustainable living through homes",
       date: "5 APRIL, 2026",
       description:
@@ -161,7 +161,7 @@ useEffect(() => {
     },
     {
       id: 2,
-      image: "https://serviceapi.spicezgold.com/download/1741758993155_6-4.jpg",
+      image: "https://tse1.mm.bing.net/th/id/OIP.poodgMRARKyKx0cPd1_4wQHaFj?cb=thfc1falcon2&rs=1&pid=ImgDetMain&o=7&rm=3",
       title:
         "Explore sustainable prefabricated homes",
       date: "10 MAY, 2026",
