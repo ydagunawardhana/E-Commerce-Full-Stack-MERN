@@ -16,12 +16,16 @@ const ForgotPasswordScreen = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Logo DAta fetch
+    // Logo Data fetch
     const fetchLogo = async () => {
       try {
-        const { data } = await axios.get("/api/logo");
+        const API_URL = import.meta.env.VITE_API_URL; 
+
+        const { data } = await axios.get(`${API_URL}/api/logo`);
+        
         if (data.image) {
-          setLogo(`http://localhost:5000${data.image}`);
+         
+          setLogo(`${API_URL}${data.image}`);
         }
       } catch (error) {
         console.error("Error fetching logo:", error);
