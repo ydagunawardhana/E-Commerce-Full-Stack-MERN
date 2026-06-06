@@ -14,7 +14,7 @@ const AddCategoryScreen = () => {
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
   const [uploading, setUploading] = useState(false);
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = process.env.REACT_APP_API_URL;
 
   // Image Handler
   const handleImageChange = (e) => {
