@@ -12,6 +12,7 @@ const MyListItems = (props) => {
   }, [id]);
 
   const { item } = props;
+  const API_URL = import.meta.env.VITE_API_URL;
 
   // My List Item Details
   return (
@@ -21,21 +22,21 @@ const MyListItems = (props) => {
     >
       {/*-- Mylist Page Product Iamge --*/}
 
-      <div className="img w-[12%] rounded-md overflow-hidden">
-        <Link to={`/product/${item?.productId}`} className="group">
-          <img
-            src={
-              item?.image
-                ? item.image.startsWith("http")
-                  ? item.image
-                  : `http://localhost:5000${item.image}`
-                : "https://placehold.co/100x100?text=No+Img"
-            }
-            className="w-full group-hover:scale-105 transition-all"
-            alt={item?.productTitle}
-          />
-        </Link>
-      </div>
+     <div className="img w-[12%] rounded-md overflow-hidden">
+  <Link to={`/product/${item?.productId}`} className="group">
+    <img
+      src={
+        item?.image
+          ? item.image.startsWith("http")
+            ? item.image
+            : `${API_URL}${item.image}` 
+          : "https://placehold.co/100x100?text=No+Img"
+      }
+      className="w-full group-hover:scale-105 transition-all"
+      alt={item?.productTitle}
+    />
+  </Link>
+</div>
 
       {/*-- Mylist Page  Product Details --*/}
       <div className="info w-[85%] relative">
