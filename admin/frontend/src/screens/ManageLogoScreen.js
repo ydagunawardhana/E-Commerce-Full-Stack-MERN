@@ -9,9 +9,13 @@ const ManageLogoScreen = () => {
   useEffect(() => {
     const fetchLogo = async () => {
       try {
-        const { data } = await axios.get("/api/logo");
+        const API_URL = import.meta.env.VITE_API_URL; 
+
+        const { data } = await axios.get(`${API_URL}/api/logo`);
+        
         if (data.image) {
-          setPreview(`http://localhost:5000${data.image}`);
+          
+          setPreview(`${API_URL}${data.image}`);
         }
       } catch (error) {
         console.error("Error fetching logo:", error);
