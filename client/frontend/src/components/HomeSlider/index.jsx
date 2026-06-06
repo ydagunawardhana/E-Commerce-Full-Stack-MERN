@@ -6,6 +6,7 @@ import { Navigation, Autoplay } from "swiper/modules";
 
 //Home Sliders Functions
 const HomeSlider = (props) => {
+  const API_URL = import.meta.env.VITE_API_URL;
   const IMAGE_URL = import.meta.env.VITE_IMAGE_URL;
   return (
     <div className="homeslider py-6">
