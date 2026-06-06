@@ -6,7 +6,7 @@ import { Navigation, Autoplay } from "swiper/modules";
 
 //Home Sliders Functions
 const HomeSlider = (props) => {
-  const API_URL = import.meta.env.VITE_API_URL;
+  const IMAGE_URL = import.meta.env.VITE_IMAGE_URL;
   return (
     <div className="homeslider py-6">
       <div className="container">
@@ -29,7 +29,7 @@ const HomeSlider = (props) => {
   <img
     src={
       banner.image
-        ? `${API_URL}${banner.image}`
+        ? `${IMAGE_URL}${banner.image}`
         : "https://via.placeholder.com/1200x400"
     }
     alt="Banner slider"
