@@ -290,9 +290,13 @@ const Checkout = () => {
     };
     localStorage.setItem("pendingOrder", JSON.stringify(orderDetails));
 
+    
+    const API_URL = import.meta.env.VITE_API_URL;
+
     try {
+     
       const response = await fetch(
-        "http://localhost:8000/api/payment/create-checkout-session",
+        `${API_URL}/api/payment/create-checkout-session`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
