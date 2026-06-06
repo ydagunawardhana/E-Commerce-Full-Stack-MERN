@@ -83,6 +83,8 @@ const EditCategoryScreen = () => {
     }
   };
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   return (
     <div
       style={{
@@ -162,14 +164,14 @@ const EditCategoryScreen = () => {
                   }}
                 >
                   <img
-                    src={preview ? preview : `http://localhost:5000${image}`}
-                    alt="Category"
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                    }}
-                  />
+  src={preview ? preview : `${API_URL}${image}`} 
+  alt="Category"
+  style={{
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+  }}
+/>
                   <button
                     type="button"
                     onClick={handleRemoveImage}
