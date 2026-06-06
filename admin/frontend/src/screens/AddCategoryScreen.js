@@ -14,6 +14,7 @@ const AddCategoryScreen = () => {
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
   const [uploading, setUploading] = useState(false);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   // Image Handler
   const handleImageChange = (e) => {
@@ -62,10 +63,10 @@ const AddCategoryScreen = () => {
       };
 
       await axios.post(
-        "http://localhost:5000/api/categories",
-        formData,
-        config
-      );
+  `${API_URL}/api/categories`,
+  formData,
+  config
+);
 
       alert("Category Added Successfully!");
       navigate("/categories");
