@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 
 // Home Category slider Functions
 const HomeCategorySlider = (props) => {
+  const API_URL = import.meta.env.VITE_API_URL;
   const IMAGE_URL = import.meta.env.VITE_IMAGE_URL;
   return (
     <div className="homecategoryslider pt-5 py-8">
