@@ -38,6 +38,8 @@ const CategoryListScreen = () => {
     }
   };
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   return (
     <div
       style={{
@@ -120,26 +122,26 @@ const CategoryListScreen = () => {
                     }}
                   >
                     {/* Image Column */}
-                    <td style={tdStyle}>
-                      <div style={imgContainerStyle}>
-                        <img
-                          src={
-                            category.image
-                              ? `http://localhost:5000${category.image}`
-                              : "https://via.placeholder.com/50"
-                          }
-                          alt={category.name}
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                            objectFit: "cover",
-                          }}
-                          onError={(e) => {
-                            e.target.src = "https://via.placeholder.com/50";
-                          }}
-                        />
-                      </div>
-                    </td>
+                   <td style={tdStyle}>
+  <div style={imgContainerStyle}>
+    <img
+      src={
+        category.image
+          ? `${API_URL}${category.image}` 
+          : "https://via.placeholder.com/50"
+      }
+      alt={category.name}
+      style={{
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+      }}
+      onError={(e) => {
+        e.target.src = "https://via.placeholder.com/50";
+      }}
+    />
+  </div>
+</td>
 
                     {/* Name Column */}
                     <td style={tdStyle}>
