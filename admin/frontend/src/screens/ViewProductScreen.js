@@ -9,6 +9,7 @@ const ViewProductScreen = () => {
   const [product, setProduct] = useState(null);
   const [activeImage, setActiveImage] = useState("");
   const [loadingDelete, setLoadingDelete] = useState(false);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   // Product Data Fetching
   const fetchProduct = async () => {
@@ -41,8 +42,10 @@ const ViewProductScreen = () => {
           },
         };
 
+        const API_URL = import.meta.env.VITE_API_URL; 
+
         await axios.delete(
-          `http://localhost:5000/api/products/${id}/reviews/${reviewId}`,
+          `${API_URL}/api/products/${id}/reviews/${reviewId}`,
           config
         );
 
@@ -109,51 +112,49 @@ const ViewProductScreen = () => {
         {/* LEFT SIDE: Image Gallery */}
         <div style={{ flex: "1 1 400px", display: "flex", gap: "20px" }}>
           {/* Thumbnails Strip */}
-          <div
-            style={{ display: "flex", flexDirection: "column", gap: "10px" }}
-          >
-            {product.images &&
-              product.images.map((img, index) => (
-                <img
-                  key={index}
-                  src={
-                    img.startsWith("http") ? img : `http://localhost:5000${img}`
-                  }
-                  alt="thumb"
-                  onClick={() => setActiveImage(img)}
-                  style={{
-                    width: "70px",
-                    height: "70px",
-                    objectFit: "cover",
-                    borderRadius: "8px",
-                    cursor: "pointer",
-                    border:
-                      activeImage === img
-                        ? "2px solid #4361ee"
-                        : "1px solid #eee",
-                  }}
-                />
-              ))}
-          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+  {product.images &&
+    product.images.map((img, index) => (
+      <img
+        key={index}
+        src={
+          img.startsWith("http") ? img : `${API_URL}${img}` 
+        }
+        alt="thumb"
+        onClick={() => setActiveImage(img)}
+        style={{
+          width: "70px",
+          height: "70px",
+          objectFit: "cover",
+          borderRadius: "8px",
+          cursor: "pointer",
+          border:
+            activeImage === img
+              ? "2px solid #4361ee"
+              : "1px solid #eee",
+        }}
+      />
+    ))}
+</div>
 
           {/* Main Large Image */}
-          <div style={{ flex: 1 }}>
-            <img
-              src={
-                activeImage.startsWith("http")
-                  ? activeImage
-                  : `http://localhost:5000${activeImage}`
-              }
-              alt="Main"
-              style={{
-                width: "100%",
-                maxHeight: "500px",
-                objectFit: "contain",
-                borderRadius: "12px",
-                border: "1px solid #f0f0f0",
-              }}
-            />
-          </div>
+         <div style={{ flex: 1 }}>
+  <img
+    src={
+      activeImage.startsWith("http")
+        ? activeImage
+        : `${API_URL}${activeImage}` 
+    }
+    alt="Main"
+    style={{
+      width: "100%",
+      maxHeight: "500px",
+      objectFit: "contain",
+      borderRadius: "12px",
+      border: "1px solid #f0f0f0",
+    }}
+  />
+</div>
         </div>
 
         {/*  RIGHT SIDE: Product Info  */}
