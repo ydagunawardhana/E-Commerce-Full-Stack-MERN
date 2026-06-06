@@ -21,6 +21,7 @@ const ProductItem = (props) => {
 
   const context = useContext(MyContext);
   const { item } = props;
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const addToMyList = (id) => {
     if (context.isLogin === true) {
@@ -62,39 +63,38 @@ const ProductItem = (props) => {
       >
         <Link to={`/product/${item?._id}`}>
           <div
-            className="img overflow-hidden w-full h-[350px] bg-white flex items-center 
-          justify-center relative "
-          >
-            {" "}
-            <img
-              src={
-                item?.images?.[0]
-                  ? item.images[0].startsWith("http")
-                    ? item.images[0]
-                    : `http://localhost:5000${item.images[0]}`
-                  : "https://placehold.co/500x500?text=No+Image"
-              }
-              className="w-full h-full object-contain p-1 transition-all duration-700 rounded-xl"
-              alt={item?.name}
-            />
-            {/* Hover Image (Second Image) */}
-            <img
-              src={
-                item?.images?.[1]
-                  ? item.images[1].startsWith("http")
-                    ? item.images[1]
-                    : `http://localhost:5000${item.images[1]}`
-                  : item?.images?.[0]
-                  ? item.images[0].startsWith("http")
-                    ? item.images[0]
-                    : `http://localhost:5000${item.images[0]}`
-                  : "https://placehold.co/500x500?text=No+Image"
-              }
-              className="w-full h-full object-contain  transition-all duration-700 absolute 
-              top-0 left-0 opacity-0 group-hover:opacity-100 p-1 bg-white rounded-lg"
-              alt={item?.name}
-            />
-          </div>
+  className="img overflow-hidden w-full h-[350px] bg-white flex items-center justify-center relative "
+>
+  {" "}
+  <img
+    src={
+      item?.images?.[0]
+        ? item.images[0].startsWith("http")
+          ? item.images[0]
+          : `${API_URL}${item.images[0]}` 
+        : "https://placehold.co/500x500?text=No+Image"
+    }
+    className="w-full h-full object-contain p-1 transition-all duration-700 rounded-xl"
+    alt={item?.name}
+  />
+  
+  {/* Hover Image (Second Image) */}
+  <img
+    src={
+      item?.images?.[1]
+        ? item.images[1].startsWith("http")
+          ? item.images[1]
+          : `${API_URL}${item.images[1]}` 
+        : item?.images?.[0]
+        ? item.images[0].startsWith("http")
+          ? item.images[0]
+          : `${API_URL}${item.images[0]}`
+        : "https://placehold.co/500x500?text=No+Image"
+    }
+    className="w-full h-full object-contain  transition-all duration-700 absolute top-0 left-0 opacity-0 group-hover:opacity-100 p-1 bg-white rounded-lg"
+    alt={item?.name}
+  />
+</div>
         </Link>
 
         {item?.discount > 0 && (
