@@ -28,6 +28,7 @@ const ProductListScreen = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const [selectedProducts, setSelectedProducts] = useState([]);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   // Fetch Data
   const fetchData = async () => {
@@ -395,26 +396,25 @@ const ProductListScreen = () => {
                       }}
                     >
                       <div style={productImgContainerStyle}>
-                        <img
-                          src={
-                            product.images?.[0]
-                              ? product.images[0].startsWith("http")
-                                ? product.images[0] // Cloudinary URL එකක් නම් කෙලින්ම ගන්න
-                                : `http://localhost:5000${product.images[0]}` // Local path එකක් නම් Backend URL එක දෙන්න
-                              : "https://placehold.co/50x50?text=No+Image"
-                          }
-                          alt={product.name}
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                            objectFit: "cover",
-                          }}
-                          onError={(e) => {
-                            e.target.src =
-                              "https://placehold.co/50x50?text=Error";
-                          }}
-                        />
-                      </div>
+  <img
+    src={
+      product.images?.[0]
+        ? product.images[0].startsWith("http")
+          ? product.images[0] 
+          : `${API_URL}${product.images[0]}` 
+        : "https://placehold.co/50x50?text=No+Image"
+    }
+    alt={product.name}
+    style={{
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+    }}
+    onError={(e) => {
+      e.target.src = "https://placehold.co/50x50?text=Error";
+    }}
+  />
+</div>
                       <div>
                         <h4
                           style={{
