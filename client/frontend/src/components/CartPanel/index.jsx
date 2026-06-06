@@ -8,6 +8,7 @@ import { deleteData } from "../../utils/api";
 // Cart Panel Drawer Function
 const CartPanel = (closeCart) => {
   const context = useContext(MyContext);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const deleteItem = (id, productId) => {
     const data = { _id: id, productId: productId };
@@ -50,32 +51,30 @@ const CartPanel = (closeCart) => {
               >
                 {/* Image Section */}
                 <div className="img w-[25%] overflow-hidden h-[90px] rounded-md bg-gray-100">
-                  <Link
-                    to={`/product/${item.productId._id}`}
-                    onClick={() => context.setOpenCartPanel(false)}
-                  >
-                    <img
-                      src={
-                        item.productId.images?.[0]
-                          ? item.productId.images[0].startsWith("http")
-                            ? item.productId.images[0]
-                            : `http://localhost:5000${item.productId.images[0]}`
-                          : "https://placehold.co/100x100?text=No+Img"
-                      }
-                      className=" object-contain rounded-md hover:scale-105
-                      transition-all duration-400"
-                      alt={
-                        item.productId.name?.length > 10
-                          ? item.productId.name.substr(0, 20) + "..."
-                          : item.productId.name
-                      }
-                      onError={(e) => {
-                        e.target.src =
-                          "https://placehold.co/100x100?text=Error";
-                      }}
-                    />
-                  </Link>
-                </div>
+  <Link
+    to={`/product/${item.productId._id}`}
+    onClick={() => context.setOpenCartPanel(false)}
+  >
+    <img
+      src={
+        item.productId.images?.[0]
+          ? item.productId.images[0].startsWith("http")
+            ? item.productId.images[0]
+            : `${API_URL}${item.productId.images[0]}` 
+          : "https://placehold.co/100x100?text=No+Img"
+      }
+      className=" object-contain rounded-md hover:scale-105 transition-all duration-400"
+      alt={
+        item.productId.name?.length > 10
+          ? item.productId.name.substr(0, 20) + "..."
+          : item.productId.name
+      }
+      onError={(e) => {
+        e.target.src = "https://placehold.co/100x100?text=Error";
+      }}
+    />
+  </Link>
+</div>
 
                 <div className="info w-[75%] pr-5 relative">
                   <h4 className="text-[14px] font-[500]">
