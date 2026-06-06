@@ -48,7 +48,7 @@ const AddProductScreen = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const API_URL = import.meta.env.VITE_API_URL; 
+        const API_URL = process.env.REACT_APP_API_URL; 
 
         const [catRes, subRes, thirdRes] = await Promise.all([
           axios.get(`${API_URL}/api/categories`),
@@ -160,7 +160,7 @@ const AddProductScreen = () => {
           Authorization: `Bearer ${userInfo.token}`,
         },
       };
-      const API_URL = import.meta.env.VITE_API_URL;
+      const API_URL = process.env.REACT_APP_API_URL;
 
       // Backend URL
       await axios.post(
