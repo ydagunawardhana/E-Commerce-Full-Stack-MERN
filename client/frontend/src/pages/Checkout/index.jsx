@@ -45,6 +45,7 @@ const Checkout = () => {
   const [isCODLoading, setIsCODLoading] = useState(false);
 
   const [selectedAddress, setSelectedAddress] = useState("");
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const [formFields, setFormFields] = useState({
     address_line: "",
@@ -618,16 +619,16 @@ const Checkout = () => {
                     <div className="flex items-center gap-3">
                       <div className="img w-[70px] h-[70px] rounded-md overflow-hidden border">
                         <img
-                          src={
-                            item.productId?.images?.[0]
-                              ? item.productId.images[0].startsWith("http")
-                                ? item.productId.images[0]
-                                : `http://localhost:5000${item.productId.images[0]}`
-                              : "https://placehold.co/60x60"
-                          }
-                          className=" object-contain hover:scale-110 transition-all"
-                          alt="product"
-                        />
+  src={
+    item.productId?.images?.[0]
+      ? item.productId.images[0].startsWith("http")
+        ? item.productId.images[0]
+        : `${API_URL}${item.productId.images[0]}` // localhost වෙනුවට API_URL එක
+      : "https://placehold.co/60x60"
+  }
+  className=" object-contain hover:scale-110 transition-all"
+  alt="product"
+/>
                       </div>
                       <div className="info">
                         <h4 className="text-[14px] font-[600] leading-4 line-clamp-2 w-[150px]">
