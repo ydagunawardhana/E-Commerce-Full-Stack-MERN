@@ -18,6 +18,7 @@ const ProductItem = (props) => {
   const context = useContext(MyContext);
   const { item } = props;
   const [loading, setLoading] = useState(false);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const addToMyList = (id) => {
     if (context.isLogin === true) {
@@ -80,35 +81,34 @@ const ProductItem = (props) => {
       <div className="group imgWrapper w-[100%] overflow-hidden rounded-md relative">
         <Link to={`/product/${item?._id}`}>
           <div className="img h-[220px] overflow-hidden">
-            <img
-              src={
-                item?.images?.[0]
-                  ? item.images[0].startsWith("http")
-                    ? item.images[0]
-                    : `http://localhost:5000${item.images[0]}`
-                  : "https://placehold.co/220x220?text=No+Image"
-              }
-              className="w-full h-full object-cover object-top"
-              alt={item?.name}
-              onError={(e) => {
-                e.target.src =
-                  "https://placehold.co/220x220?text=Error+Loading";
-              }}
-            />
+  <img
+    src={
+      item?.images?.[0]
+        ? item.images[0].startsWith("http")
+          ? item.images[0]
+          : `${API_URL}${item.images[0]}` 
+        : "https://placehold.co/220x220?text=No+Image"
+    }
+    className="w-full h-full object-cover object-top"
+    alt={item?.name}
+    onError={(e) => {
+      e.target.src =
+        "https://placehold.co/220x220?text=Error+Loading";
+    }}
+  />
 
-            {item?.images?.length > 1 && (
-              <img
-                src={
-                  item.images[1].startsWith("http")
-                    ? item.images[1]
-                    : `http://localhost:5000${item.images[1]}`
-                }
-                className="w-full h-full object-cover object-top transition-all duration-700 absolute top-0 left-0 opacity-0
-      group-hover:opacity-100 group-hover:scale-105"
-                alt={item?.name}
-              />
-            )}
-          </div>
+  {item?.images?.length > 1 && (
+    <img
+      src={
+        item.images[1].startsWith("http")
+          ? item.images[1]
+          : `${API_URL}${item.images[1]}` 
+      }
+      className="w-full h-full object-cover object-top transition-all duration-700 absolute top-0 left-0 opacity-0 group-hover:opacity-100 group-hover:scale-105"
+      alt={item?.name}
+    />
+  )}
+</div>
         </Link>
         {item?.discount > 0 && (
           <span className="discount flex items-center absolute top-[10px] left-[10px] z-50 bg-[#ff5252] text-white rounded-lg p-1 text-[13px] font-[600]">
