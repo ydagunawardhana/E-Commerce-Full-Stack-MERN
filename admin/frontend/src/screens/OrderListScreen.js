@@ -28,10 +28,13 @@ const OrderListScreen = () => {
 
   const fetchOrders = async () => {
     try {
+      const API_URL = import.meta.env.VITE_API_URL; 
+      
       const userInfo = JSON.parse(localStorage.getItem("userInfo"));
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
+      
       const { data } = await axios.get(
-        "http://localhost:5000/api/orders/admin/all",
+        `${API_URL}/api/orders/admin/all`,
         config
       );
 
@@ -45,7 +48,9 @@ const OrderListScreen = () => {
 
   useEffect(() => {
     fetchOrders();
-    const socket = io("http://localhost:8000");
+    
+    const API_URL = import.meta.env.VITE_API_URL;
+    const socket = io(API_URL);
 
     socket.on("order_updated", () => {
       fetchOrders();
@@ -64,6 +69,8 @@ const OrderListScreen = () => {
     setExpandedOrderId(expandedOrderId === id ? null : id);
   };
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   // Status Change Handler
   const handleStatusChange = async (id, newStatus, e) => {
     e.stopPropagation();
@@ -76,10 +83,10 @@ const OrderListScreen = () => {
         };
 
         await axios.put(
-          `http://localhost:8000/api/orders/${id}/status`,
-          { status: newStatus },
-          config
-        );
+  `${API_URL}/api/orders/${id}/status`,
+  { status: newStatus },
+  config
+);
 
         fetchOrders();
         alert("Status Updated!");
