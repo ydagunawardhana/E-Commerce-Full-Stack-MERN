@@ -12,20 +12,24 @@ const EditHomeSlideScreen = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchBanner = async () => {
-      try {
-        const { data } = await axios.get(`/api/banners/${id}`);
-        const imageUrl = data.image.startsWith("/")
-          ? `http://localhost:5000${data.image}`
-          : data.image;
-        setPreview(imageUrl);
-      } catch (error) {
-        console.error("Error fetching banner:", error);
-        alert("Could not load banner data");
-      }
-    };
-    fetchBanner();
-  }, [id]);
+  const fetchBanner = async () => {
+    try {
+      const API_URL = import.meta.env.VITE_API_URL; 
+
+      const { data } = await axios.get(`${API_URL}/api/banners/${id}`);
+      
+      const imageUrl = data.image.startsWith("/")
+        ? `${API_URL}${data.image}` 
+        : data.image;
+        
+      setPreview(imageUrl);
+    } catch (error) {
+      console.error("Error fetching banner:", error);
+      alert("Could not load banner data");
+    }
+  };
+  fetchBanner();
+}, [id]);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
