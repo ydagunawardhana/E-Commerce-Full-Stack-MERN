@@ -13,6 +13,7 @@ import io from "socket.io-client";
 const Orders = () => {
   const [isOpenOrderdProduct, setIsOpenOrderdProduct] = useState(null);
   const [orders, setOrders] = useState([]);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   //  Orders API
   const fetchOrders = () => {
@@ -27,7 +28,9 @@ const Orders = () => {
   useEffect(() => {
     fetchOrders();
 
-    const socket = io("http://localhost:8000");
+    const API_URL = import.meta.env.VITE_API_URL;
+    
+    const socket = io(API_URL);
 
     socket.on("order_updated", () => {
       fetchOrders();
@@ -190,14 +193,13 @@ const Orders = () => {
                                         >
                                           <td className="px-3 py-2">
                                             <img
-                                              src={
-                                                item.image?.startsWith("http")
-                                                  ? item.image
-                                                  : `http://localhost:5000${item.image}`
-                                              }
-                                              className="w-[50px] h-[50px] object-contain !rounded-md 
-                                             hover:scale-110 transition-all duration-300"
-                                            />
+  src={
+    item.image?.startsWith("http")
+      ? item.image
+      : `${API_URL}${item.image}` 
+  }
+  className="w-[50px] h-[50px] object-contain !rounded-md hover:scale-110 transition-all duration-300"
+/>
                                           </td>
                                           <td className="px-3 py-2 font-medium">
                                             {item.productId?.name ||
