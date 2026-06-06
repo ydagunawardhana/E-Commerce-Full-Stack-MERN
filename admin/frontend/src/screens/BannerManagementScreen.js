@@ -96,6 +96,8 @@ const BannerManagementScreen = () => {
   const isAllSelected =
     banners.length > 0 && selectedBanners.length === banners.length;
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   return (
     <div
       style={{
@@ -260,23 +262,23 @@ const BannerManagementScreen = () => {
                     </td>
 
                     {/* Preview Image */}
-                    <td style={tdStyle}>
-                      <div style={imgContainerStyle}>
-                        <img
-                          src={
-                            banner.image.startsWith("/")
-                              ? `http://localhost:5000${banner.image}`
-                              : banner.image
-                          }
-                          alt="Banner"
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                            objectFit: "cover",
-                          }}
-                        />
-                      </div>
-                    </td>
+                   <td style={tdStyle}>
+  <div style={imgContainerStyle}>
+    <img
+      src={
+        banner.image.startsWith("/")
+          ? `${API_URL}${banner.image}` 
+          : banner.image
+      }
+      alt="Banner"
+      style={{
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+      }}
+    />
+  </div>
+</td>
 
                     {/* URL */}
                     <td
