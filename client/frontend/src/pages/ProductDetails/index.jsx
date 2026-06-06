@@ -27,35 +27,39 @@ const ProductDetails = () => {
 
   const fetchProductData = async () => {
     try {
-    const API_URL = import.meta.env.VITE_API_URL; 
+      const API_URL = import.meta.env.VITE_API_URL; 
 
-    
-    const res = await axios.get(`${API_URL}/api/products/${id}`);
-    const data = res.data;
-
-    
-    if (data.images && data.images.length > 0) {
-      data.images = data.images.map((img) =>
-        img.startsWith("http") ? img : `${API_URL}${img}`
-      );
+      // API Call 
+      const res = await axios.get(`${API_URL}/api/products/${id}`);
+      const data = res.data;
+      
+      // Image URL fix logic
+      if (data.images && data.images.length > 0) {
+        data.images = data.images.map((img) =>
+          
+          img.startsWith("http") ? img : `${API_URL}${img}`
+        );
+      }
+      setProduct(data);
+    } catch (error) {
+      console.error("Error fetching product:", error);
     }
-    setProduct(data);
-  } catch (error) {
-    console.error("Error fetching product:", error);
-  }
-};
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
 
+    const API_URL = import.meta.env.VITE_API_URL; 
+
     axios.get(`${API_URL}/api/products`).then((res) => {
-  const fixedProducts = res.data.map((item) => {
-    if (item.images) {
-      item.images = item.images.map((img) =>
-        img.startsWith("http") ? img : `${API_URL}${img}`
-      );
-    }
-    return item;
+      const fixedProducts = res.data.map((item) => {
+        if (item.images) {
+          item.images = item.images.map((img) =>
+            
+            img.startsWith("http") ? img : `${API_URL}${img}`
+          );
+        }
+        return item;
       });
       setProducts(fixedProducts);
     });
@@ -64,7 +68,7 @@ const ProductDetails = () => {
   }, [id]);
 
   // Review Submit
-  const submitReviewHandler = async (e) => {
+ const submitReviewHandler = async (e) => {
     e.preventDefault();
 
     const token = localStorage.getItem("accesstoken");
@@ -90,8 +94,10 @@ const ProductDetails = () => {
         },
       };
 
+      const API_URL = import.meta.env.VITE_API_URL; 
+
       await axios.post(
-        `http://localhost:8000/api/products/${id}/reviews`,
+        `${API_URL}/api/products/${id}/reviews`,
         { rating, comment },
         config
       );
