@@ -91,7 +91,7 @@ const { data } = await axios.get(
     fetchProducts();
 
     //  WebSocket Connection
-    const socket = io("http://localhost:5000");
+    const socket = io(import.meta.env.VITE_API_URL);
 
     socket.on("order_updated", () => fetchStats());
     socket.on("banner_added", () => fetchStats());
@@ -506,22 +506,22 @@ const { data } = await axios.get(
                       }}
                     >
                       <div style={imgBoxStyle}>
-                        <img
-                          src={
-                            product.images && product.images[0]
-                              ? product.images[0].startsWith("/")
-                                ? `http://localhost:5000${product.images[0]}`
-                                : product.images[0]
-                              : "/placeholder.jpg"
-                          }
-                          alt={product.name}
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                            objectFit: "cover",
-                          }}
-                        />
-                      </div>
+  <img
+    src={
+      product.images && product.images[0]
+        ? product.images[0].startsWith("/")
+          ? `${API_URL}${product.images[0]}` 
+          : product.images[0]
+        : "/placeholder.jpg"
+    }
+    alt={product.name}
+    style={{
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+    }}
+  />
+</div>
                       <div>
                         <div
                           style={{
