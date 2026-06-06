@@ -28,7 +28,7 @@ const OrderListScreen = () => {
 
   const fetchOrders = async () => {
     try {
-      const API_URL = import.meta.env.VITE_API_URL; 
+      const API_URL = process.env.REACT_APP_API_URL; 
       
       const userInfo = JSON.parse(localStorage.getItem("userInfo"));
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
@@ -49,7 +49,7 @@ const OrderListScreen = () => {
   useEffect(() => {
     fetchOrders();
     
-    const API_URL = import.meta.env.VITE_API_URL;
+    const API_URL = process.env.REACT_APP_API_URL;
     const socket = io(API_URL);
 
     socket.on("order_updated", () => {
@@ -69,7 +69,7 @@ const OrderListScreen = () => {
     setExpandedOrderId(expandedOrderId === id ? null : id);
   };
 
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = process.env.REACT_APP_API_URL;
 
   // Status Change Handler
   const handleStatusChange = async (id, newStatus, e) => {
