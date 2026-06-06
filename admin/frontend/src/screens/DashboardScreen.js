@@ -24,7 +24,7 @@ const DashboardScreen = () => {
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
   const [filterType, setFilterType] = useState("monthly");
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = process.env.REACT_APP_API_URL;
 
   // Stats State
   const [stats, setStats] = useState({
@@ -62,7 +62,7 @@ const DashboardScreen = () => {
           },
         };
 
-        const API_URL = import.meta.env.VITE_API_URL; 
+        const API_URL = process.env.REACT_APP_API_URL; 
 
 const { data } = await axios.get(
   `${API_URL}/api/stats?type=${filterType}`,
@@ -91,7 +91,7 @@ const { data } = await axios.get(
     fetchProducts();
 
     //  WebSocket Connection
-    const socket = io(import.meta.env.VITE_API_URL);
+    const socket = io(process.env.REACT_APP_API_URL);
 
     socket.on("order_updated", () => fetchStats());
     socket.on("banner_added", () => fetchStats());
