@@ -20,7 +20,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { io } from "socket.io-client";
 
-const socket = io(import.meta.env.VITE_API_URL);
+const API_URL = import.meta.env.VITE_API_URL;
+const socket = io(API_URL);
 
 // Home Page Function (All-Merge)
 const Home = () => {
@@ -37,26 +38,33 @@ const Home = () => {
 useEffect(() => {
     const API_URL = import.meta.env.VITE_API_URL;
 
-    // 1. Fetch Data
+    // 1. Products 
     axios.get(`${API_URL}/api/products`).then((res) => {
       setProducts(res.data);
     });
 
+    // 2. Categories
     axios.get(`${API_URL}/api/categories`).then((res) => {
       if (res.data && Array.isArray(res.data)) {
         setCategoryList(res.data);
       }
     });
 
+   
     axios.get(`${API_URL}/api/banners`).then((res) => {
       setBanners(res.data);
     });
 
-    // 2. Socket Listeners
     socket.on("productAdded", (newProduct) => {
       setProducts((prevProducts) => {
-        const isExist = prevProducts.find((item) => item._id === newProduct._id);
-        return !isExist ? [newProduct, ...prevProducts] : prevProducts;
+        const isExist = prevProducts.find(
+          (item) => item._id === newProduct._id
+        );
+
+        if (!isExist) {
+          return [newProduct, ...prevProducts];
+        }
+        return prevProducts;
       });
     });
 
@@ -68,17 +76,18 @@ useEffect(() => {
     });
 
     socket.on("bannerAdded", (newBanner) => {
-      setBanners((prevBanners) => [...prevBanners, newBanner]);
+      setBanners((prevBanners) => {
+        return [...prevBanners, newBanner];
+      });
     });
 
-    // 3. Cleanup function
     return () => {
       socket.off("productAdded");
       socket.off("categoryAdded");
       socket.off("bannerAdded");
     };
   }, []);
-
+  
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
