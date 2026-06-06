@@ -39,10 +39,12 @@ const ProfileScreen = () => {
       setEmail(user.email);
 
       if (user.image) {
+        const API_URL = import.meta.env.VITE_API_URL; 
+
         setImagePreview(
           user.image.startsWith("http")
             ? user.image
-            : `http://localhost:5000${user.image}`
+            : `${API_URL}${user.image}` 
         );
       }
     }
