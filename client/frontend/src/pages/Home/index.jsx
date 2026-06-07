@@ -47,14 +47,14 @@ useEffect(() => {
     });
 
     // 2. Categories
-    axios.get(`${API_URL}/api/categories`).then((res) => {
+    axios.get(`${IMAGE_URL}/api/categories`).then((res) => {
       if (res.data && Array.isArray(res.data)) {
         setCategoryList(res.data);
       }
     });
 
    
-    axios.get(`${IMAGE_URL}/api/banners`).then((res) => {
+    axios.get(`${API_URL}/api/banners`).then((res) => {
       setBanners(res.data);
     });
 
