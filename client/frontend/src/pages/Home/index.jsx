@@ -54,7 +54,7 @@ useEffect(() => {
     });
 
    
-    axios.get(`${API_URL}/api/banners`).then((res) => {
+    axios.get(`${IMAGE_URL}/api/banners`).then((res) => {
       setBanners(res.data);
     });
 
